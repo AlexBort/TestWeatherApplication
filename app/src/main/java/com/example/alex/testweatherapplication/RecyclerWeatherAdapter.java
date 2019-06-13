@@ -37,7 +37,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
     @Override
     public RecyclerWeatherAdapter.CityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_city, null);
-        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+//        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new CityViewHolder(view);
     }
 
@@ -65,7 +65,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         onBindDayDate(holder.context, 3, holder.dateThirdDay, cityWeather);
     }
 
-    private void onBindDayDate(Context context, int day, AutoCompleteTextView textView, CityWeather cityWeather) {
+    private void onBindDayDate(Context context, int day, AppCompatTextView textView, CityWeather cityWeather) {
         textView.setText(context.getString(R.string.title_date, cityWeather.getList().get(day).getDtTxt()));
     }
 
@@ -73,7 +73,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         setWeatherIcon(context, cityWeather.getList().get(day).getWeather().get(0).getIcon(), imageView);
     }
 
-    private void onBindDayTemperature(Context context, int day, AutoCompleteTextView textView, CityWeather cityWeather) {
+    private void onBindDayTemperature(Context context, int day, AppCompatTextView textView, CityWeather cityWeather) {
         textView.setText(context.getString(R.string.title_temperature, cityWeather.getList().get(day).getMain().getTemp()));
     }
 
@@ -97,12 +97,12 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
 
     public static class CityViewHolder extends GroupViewHolder {
 
-        private AutoCompleteTextView tmpFirstDay;
-        private AutoCompleteTextView tmpSecondDay;
-        private AutoCompleteTextView tmpThirdDay;
-        private AutoCompleteTextView dateFirstDay;
-        private AutoCompleteTextView dateSecondDay;
-        private AutoCompleteTextView dateThirdDay;
+        private AppCompatTextView tmpFirstDay;
+        private AppCompatTextView tmpSecondDay;
+        private AppCompatTextView tmpThirdDay;
+        private AppCompatTextView dateFirstDay;
+        private AppCompatTextView dateSecondDay;
+        private AppCompatTextView dateThirdDay;
         private SquareImageView firstImageView;
         private SquareImageView secondImageView;
         private SquareImageView thirdImageView;
@@ -139,8 +139,8 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
             tmpThirdDay = thirdDayItem.findViewById(R.id.tv_temperature);
 
             firstImageView = firstDayItem.findViewById(R.id.iv_weather_icon);
-            secondDayItem = secondDayItem.findViewById(R.id.iv_weather_icon);
-            thirdDayItem = thirdDayItem.findViewById(R.id.iv_weather_icon);
+            secondImageView = secondDayItem.findViewById(R.id.iv_weather_icon);
+            thirdImageView = thirdDayItem.findViewById(R.id.iv_weather_icon);
 
             dateFirstDay = firstDayItem.findViewById(R.id.tv_date);
             dateSecondDay = secondDayItem.findViewById(R.id.tv_date);

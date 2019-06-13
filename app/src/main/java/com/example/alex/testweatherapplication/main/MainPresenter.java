@@ -18,6 +18,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
             @Override
             public void successResponse(CityWeather response) {
                 List<CityWeather> list = new LinkedList<>();
+                list.add(response);
                 view.showWeatherList(list);
 //                response.getCity();
             }
