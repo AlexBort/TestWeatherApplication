@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ria.ria.weatherapp.views.custom.SquareImageView
+    <com.example.alex.testweatherapplication.SquareImageView
         android:id="@+id/iv_weather_icon"
         android:layout_width="50dp"
         android:layout_height="50dp" />

@@ -29,6 +29,10 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         data = new LinkedList<>(); // TODO: 13.06.2019 why did she use LinkedList
     }
 
+    public RecyclerWeatherAdapter getAdapter() {
+        return this;
+    }
+
     @NonNull
     @Override
     public RecyclerWeatherAdapter.CityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

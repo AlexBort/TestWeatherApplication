@@ -4,10 +4,14 @@ import android.os.Bundle;
 
 import com.example.alex.testweatherapplication.main.IMainView;
 import com.example.alex.testweatherapplication.main.MainPresenter;
+import com.example.alex.testweatherapplication.model.CityWeather;
 import com.example.alex.testweatherapplication.mvp.BaseActivity;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
+    private RecyclerWeatherAdapter adapter;
 
     @Override
     protected MainPresenter createPresenter() {
@@ -22,5 +26,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void showWeatherList(List<CityWeather> cityWeathers) {
+        adapter = new RecyclerWeatherAdapter();
+        adapter.setData(cityWeathers);
     }
 }
