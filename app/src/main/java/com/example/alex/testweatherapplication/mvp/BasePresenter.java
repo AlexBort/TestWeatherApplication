@@ -20,9 +20,5 @@ public abstract class BasePresenter<V extends IBaseView> implements IBasePresent
         return this.view == null ? null : this.view.get();
     }
 
-    @Override
-    public void onBackButtonPressed(IBaseView view) {
-
-    }
 
 }
