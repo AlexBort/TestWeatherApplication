@@ -5,9 +5,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +32,9 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
     @NonNull
     @Override
     public RecyclerWeatherAdapter.CityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_city, null);
+        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+        return new CityViewHolder(view);
     }
 
     @SuppressLint("StringFormatInvalid")
@@ -42,6 +47,17 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         holder.date.setText(holder.context.getString(R.string.title_date, cityWeather.getList().get(0).getDtTxt()));
         holder.pressure.setText(holder.context.getString(R.string.title_pressure, cityWeather.getList().get(0).getMain().getPressure()));
         setWeatherIcon(holder.context, cityWeather.getList().get(0).getWeather().get(0).getIcon(), holder.imageView);
+
+        // for 1-st day
+//        setWeatherIcon(cityWeather.getList().get(0).getWeather().get(0).getIcon(), view.ivWeatherIcon);
+//        view.tvTemperature.setText(context.getString(R.string.title_temperature, weather.getList().get(day).getMain().getTemp()));
+//        view.tvDate.setText(context.getString(R.string.title_date, weather.getList().get(day).getDtTxt()));
+
+        // for 2-d day
+
+
+        // for 3-d day
+
 
     }
 
@@ -64,6 +80,20 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
 
 
     public static class CityViewHolder extends GroupViewHolder {
+
+        private AutoCompleteTextView tmpFirstDay;
+        private AutoCompleteTextView tmpSecondDay;
+        private AutoCompleteTextView tmpThirdDay;
+        private AutoCompleteTextView dateFirstDay;
+        private AutoCompleteTextView dateSecondDay;
+        private AutoCompleteTextView dateThirdDay;
+        private SquareImageView firstImageView;
+        private SquareImageView secondImageView;
+        private SquareImageView thirdImageView;
+
+        private LinearLayout firstDayItem;
+        private LinearLayout secondDayItem;
+        private LinearLayout thirdDayItem;
 
         private Context context;
         private AppCompatTextView date;
