@@ -15,6 +15,6 @@ public interface CityDao {
     void insert(CityEntity city);
 
     // TODO: 13.06.2019  
-    //    @Query("SELECT * from city_table")
+//    @Query("SELECT * from city_table")
     List<CityEntity> getAllCities();
 }

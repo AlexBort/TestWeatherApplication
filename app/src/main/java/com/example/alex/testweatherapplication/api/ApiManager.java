@@ -2,7 +2,6 @@ package com.example.alex.testweatherapplication.api;
 
 import com.example.alex.testweatherapplication.ResponseListener;
 import com.example.alex.testweatherapplication.db.CityEntity;
-import com.example.alex.testweatherapplication.model.City;
 import com.example.alex.testweatherapplication.model.CityWeather;
 
 import okhttp3.OkHttpClient;
