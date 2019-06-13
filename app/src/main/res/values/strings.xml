@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TestWeatherApplication</string>
+
+
+    <string name="title_add_new_city">Add</string>
+    <string name="hint_add_new_city">Add new city..</string>
+    <string name="title_humidity">Humidity: %s \%%</string>
+    <string name="title_city">City: %s</string>
+    <string name="title_pressure">Pressure:  %.2f hpa</string>
+    <string name="title_date">Date: %s</string>
+    <string name="title_temperature">Temp: %.1f</string>
+    <string name="toast_not_found">City is not found!</string>
+
+
 </resources>
