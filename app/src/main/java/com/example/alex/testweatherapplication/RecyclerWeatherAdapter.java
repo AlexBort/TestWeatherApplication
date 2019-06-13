@@ -48,17 +48,29 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         holder.pressure.setText(holder.context.getString(R.string.title_pressure, cityWeather.getList().get(0).getMain().getPressure()));
         setWeatherIcon(holder.context, cityWeather.getList().get(0).getWeather().get(0).getIcon(), holder.imageView);
 
-        // for 1-st day
-//        setWeatherIcon(cityWeather.getList().get(0).getWeather().get(0).getIcon(), view.ivWeatherIcon);
-//        view.tvTemperature.setText(context.getString(R.string.title_temperature, weather.getList().get(day).getMain().getTemp()));
-//        view.tvDate.setText(context.getString(R.string.title_date, weather.getList().get(day).getDtTxt()));
+        onBindDayTemperature(holder.context, 1, holder.tmpFirstDay, cityWeather);
+        onBindDayTemperature(holder.context, 2, holder.tmpSecondDay, cityWeather);
+        onBindDayTemperature(holder.context, 3, holder.tmpThirdDay, cityWeather);
 
-        // for 2-d day
+        onBindDayIcon(1, holder.context, holder.firstImageView, cityWeather);
+        onBindDayIcon(2, holder.context, holder.secondImageView, cityWeather);
+        onBindDayIcon(3, holder.context, holder.thirdImageView, cityWeather);
 
+        onBindDayDate(holder.context, 1, holder.dateFirstDay, cityWeather);
+        onBindDayDate(holder.context, 2, holder.dateSecondDay, cityWeather);
+        onBindDayDate(holder.context, 3, holder.dateThirdDay, cityWeather);
+    }
 
-        // for 3-d day
+    private void onBindDayDate(Context context, int day, AutoCompleteTextView textView, CityWeather cityWeather) {
+        textView.setText(context.getString(R.string.title_date, cityWeather.getList().get(day).getDtTxt()));
+    }
 
+    private void onBindDayIcon(int day, Context context, ImageView imageView, CityWeather cityWeather) {
+        setWeatherIcon(context, cityWeather.getList().get(day).getWeather().get(0).getIcon(), imageView);
+    }
 
+    private void onBindDayTemperature(Context context, int day, AutoCompleteTextView textView, CityWeather cityWeather) {
+        textView.setText(context.getString(R.string.title_temperature, cityWeather.getList().get(day).getMain().getTemp()));
     }
 
     @Override
@@ -113,6 +125,22 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
             temperature = itemView.findViewById(R.id.tv_temperature);
             city = itemView.findViewById(R.id.tv_city);
             imageView = itemView.findViewById(R.id.iv_weather_icon);
+
+            firstDayItem = itemView.findViewById(R.id.view_first_day);
+            secondDayItem = itemView.findViewById(R.id.view_sec_day);
+            thirdDayItem = itemView.findViewById(R.id.view_third_day);
+
+            tmpFirstDay = firstDayItem.findViewById(R.id.tv_temperature);
+            tmpSecondDay = secondDayItem.findViewById(R.id.tv_temperature);
+            tmpThirdDay = thirdDayItem.findViewById(R.id.tv_temperature);
+
+            firstImageView = firstDayItem.findViewById(R.id.iv_weather_icon);
+            secondDayItem = secondDayItem.findViewById(R.id.iv_weather_icon);
+            thirdDayItem = thirdDayItem.findViewById(R.id.iv_weather_icon);
+
+            dateFirstDay = firstDayItem.findViewById(R.id.tv_date);
+            dateSecondDay = secondDayItem.findViewById(R.id.tv_date);
+            dateThirdDay = thirdDayItem.findViewById(R.id.tv_date);
         }
 
 
