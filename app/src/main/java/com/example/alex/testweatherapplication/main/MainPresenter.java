@@ -12,31 +12,8 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
     private ApiManager apiManager = new ApiManager();
 
-
-//    private void requestGetWeather(final IMainView view) {
-//        apiManager.getCityWeather(null, "", new ResponseListener() {
-//            @Override
-//            public void successResponse(CityWeather response) {
-//                List<CityWeather> list = new LinkedList<>();
-//                list.add(response);
-//                view.showWeatherList(list);
-////                response.getCity();
-//            }
-//
-//            @Override
-//            public void failureResponse() {
-//
-//            }
-//        });
-//    }
-
-    // TODO: 13.06.2019 when we have db, we won't pass every time request for getting weather
-
-
     @Override
     public void onBindView(IMainView view) {
-//        super.onBindView(view);
-//        requestGetWeather(view);
     }
 
 
