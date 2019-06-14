@@ -19,7 +19,6 @@ public class MainPresenter extends BasePresenter<IMainView> {
     @Override
     public void onBindView(IMainView view) {
         presentSavedData(view);
-
     }
 
     private Realm configRealm() {
@@ -59,7 +58,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
 
     private void sendWeatherRequest(String cityName, final IMainView view) {
-        apiManager.getCityWeather(null, cityName, new ResponseListener() {
+        apiManager.getCityWeather(cityName, new ResponseListener() {
             @Override
             public void successResponse(CityWeather response) {
                 if (response == null) {

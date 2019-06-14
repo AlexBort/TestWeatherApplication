@@ -41,10 +41,9 @@ public class ApiManager {
         requestsApi = createRetrofitBuilder().create(IRequestsApi.class);
     }
 
-    public void getCityWeather(CityEntity city, String cityName, final ResponseListener listener) {
+    public void getCityWeather(String cityName, final ResponseListener listener) {
 
-        // TODO: 13.06.2019  insert CityEntity
-        Call<CityWeather> call = requestsApi.getCityWeather(cityName/*city.getCity()*/);
+        Call<CityWeather> call = requestsApi.getCityWeather(cityName);
         call.enqueue(new Callback<CityWeather>() {
             @Override
             public void onResponse(Call<CityWeather> call, Response<CityWeather> response) {

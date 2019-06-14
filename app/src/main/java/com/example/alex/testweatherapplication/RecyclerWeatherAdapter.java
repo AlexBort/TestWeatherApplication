@@ -33,7 +33,6 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
     @Override
     public RecyclerWeatherAdapter.CityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_city, null);
-//        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new CityViewHolder(view);
     }
 
@@ -82,6 +81,10 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
     public void setData(List<CityWeather> data) {
         this.data.addAll(data);
         notifyDataSetChanged();
+    }
+
+    public List<CityWeather> getData() {
+        return data;
     }
 
     private void setWeatherIcon(Context context, String url, ImageView view) {

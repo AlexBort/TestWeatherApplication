@@ -55,6 +55,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        adapter.getData().clear();
+    }
 
     @Override
     public void showBadRequest() {
