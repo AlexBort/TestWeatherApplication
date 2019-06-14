@@ -1,10 +1,5 @@
 package com.example.alex.testweatherapplication.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
