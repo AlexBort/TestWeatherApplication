@@ -10,7 +10,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class MainPresenter extends BasePresenter<IMainView> {
@@ -19,9 +18,8 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
     @Override
     public void onBindView(IMainView view) {
-        send(view);
-//        sendWeatherRequest("Kiev", view);
-//        sendWeatherRequest("Vinnytsia", view);
+        presentSavedData(view);
+
     }
 
     private Realm configRealm() {
@@ -44,11 +42,19 @@ public class MainPresenter extends BasePresenter<IMainView> {
         });
     }
 
-    private void send(IMainView view) {
-        //  workingWithDb(response);
+    private RealmResults<CityWeather> getSavedList() {
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<CityWeather> results = realm.where(CityWeather.class).findAll();
-        view.showWeatherList(results);
+        return realm.where(CityWeather.class).findAll();
+    }
+
+    private void presentSavedData(IMainView view) {
+        if (getSavedList() != null && !getSavedList().isEmpty()) {
+            view.showWeatherList(getSavedList());
+        } else {
+            sendWeatherRequest("Kiev", view);
+            sendWeatherRequest("Vinnytsia", view);
+        }
+
     }
 
 
@@ -59,13 +65,9 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 if (response == null) {
                     view.showBadRequest();
                 } else {
-
                     workingWithDb(response);
                     Realm realm = Realm.getDefaultInstance();
                     RealmResults<CityWeather> results = realm.where(CityWeather.class).findAll();
-
-                    List<CityWeather> list = new LinkedList<>();
-                    list.add(response);
                     view.showWeatherList(results);
                 }
             }
@@ -80,12 +82,8 @@ public class MainPresenter extends BasePresenter<IMainView> {
     public void onAddButtonPressed(String text, IMainView view) {
         if (text == null || text.isEmpty()) {
             view.showError();
+        } else {
+            sendWeatherRequest(text, view);
         }
-
-//        else {
-//            sendWeatherRequest("Kiev", view);
-//            sendWeatherRequest("Vinnytsia", view);
-//        }
-
     }
 }
