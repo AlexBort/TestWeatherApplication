@@ -33,10 +33,14 @@ public class MainPresenter extends BasePresenter<IMainView> {
             @Override
             public void execute(Realm realm) {
                 List<CityWeather> list = new LinkedList<>();
+
                 list.add(cityWeather);
                 for (int i = 0; i < list.size(); i++) {
                     realm.copyToRealm(list.get(i));
                 }
+
+
+
             }
         });
     }

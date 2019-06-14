@@ -41,7 +41,6 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         holder.city.setText(holder.context.getString(R.string.title_city, cityWeather.getCity().getName()));
         holder.temperature.setText(holder.context.getString(R.string.title_temperature, cityWeather.getList().get(0).getMain().getTemp()));
         holder.humidity.setText(holder.context.getString(R.string.title_humidity, String.valueOf(cityWeather.getList().get(0).getMain().getHumidity())));
-        holder.date.setText(holder.context.getString(R.string.title_date, cityWeather.getList().get(0).getDtTxt()));
         holder.pressure.setText(holder.context.getString(R.string.title_pressure, cityWeather.getList().get(0).getMain().getPressure()));
 
         setWeatherIcon(holder.context, cityWeather.getList().get(0).getWeather().get(0).getIcon(), holder.imageView);
@@ -54,14 +53,8 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         onBindDayIcon(2, holder.context, holder.secondImageView, cityWeather);
         onBindDayIcon(3, holder.context, holder.thirdImageView, cityWeather);
 
-        onBindDayDate(holder.context, 1, holder.dateFirstDay, cityWeather);
-        onBindDayDate(holder.context, 2, holder.dateSecondDay, cityWeather);
-        onBindDayDate(holder.context, 3, holder.dateThirdDay, cityWeather);
     }
 
-    private void onBindDayDate(Context context, int day, AppCompatTextView textView, CityWeather cityWeather) {
-        textView.setText(context.getString(R.string.title_date, cityWeather.getList().get(day).getDtTxt()));
-    }
 
     private void onBindDayIcon(int day, Context context, ImageView imageView, CityWeather cityWeather) {
         setWeatherIcon(context, cityWeather.getList().get(day).getWeather().get(0).getIcon(), imageView);
@@ -98,9 +91,6 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         private AppCompatTextView tmpFirstDay;
         private AppCompatTextView tmpSecondDay;
         private AppCompatTextView tmpThirdDay;
-        private AppCompatTextView dateFirstDay;
-        private AppCompatTextView dateSecondDay;
-        private AppCompatTextView dateThirdDay;
         private SquareImageView firstImageView;
         private SquareImageView secondImageView;
         private SquareImageView thirdImageView;
@@ -110,7 +100,6 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         private LinearLayout thirdDayItem;
 
         private Context context;
-        private AppCompatTextView date;
         private AppCompatTextView humidity;
         private AppCompatTextView pressure;
         private AppCompatTextView temperature;
@@ -121,7 +110,6 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         public CityViewHolder(View itemView) {
             super(itemView/*.getRootView()*/);
             this.context = itemView.getContext();
-            date = itemView.findViewById(R.id.tv_date);
             humidity = itemView.findViewById(R.id.tv_humidity);
             pressure = itemView.findViewById(R.id.tv_pressure);
             temperature = itemView.findViewById(R.id.tv_temperature);
@@ -139,10 +127,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
             firstImageView = firstDayItem.findViewById(R.id.iv_weather_icon);
             secondImageView = secondDayItem.findViewById(R.id.iv_weather_icon);
             thirdImageView = thirdDayItem.findViewById(R.id.iv_weather_icon);
-
-            dateFirstDay = firstDayItem.findViewById(R.id.tv_date);
-            dateSecondDay = secondDayItem.findViewById(R.id.tv_date);
-            dateThirdDay = thirdDayItem.findViewById(R.id.tv_date);
+            
         }
 
 

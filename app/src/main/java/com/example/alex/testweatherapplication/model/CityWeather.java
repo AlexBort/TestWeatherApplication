@@ -10,8 +10,7 @@ public class CityWeather extends RealmObject {
 
     private double message;
 
-    private RealmList<Data> list;
-
+    private RealmList<Data> list = null;
 
     private City city;
 
