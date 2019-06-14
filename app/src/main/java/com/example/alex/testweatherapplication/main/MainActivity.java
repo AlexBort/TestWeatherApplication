@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.alex.testweatherapplication.R;
 import com.example.alex.testweatherapplication.RecyclerWeatherAdapter;
+import com.example.alex.testweatherapplication.UtilsUi;
 import com.example.alex.testweatherapplication.model.CityWeather;
 import com.example.alex.testweatherapplication.mvp.BaseActivity;
 
@@ -40,10 +41,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         editCity = findViewById(R.id.et_query);
 
         mainView = this;
-
+        
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UtilsUi.hideKeyboard(MainActivity.this, view);
                 presenter.onAddButtonPressed(editCity.getText().toString(), mainView);
             }
         });
