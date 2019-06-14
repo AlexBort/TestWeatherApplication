@@ -17,9 +17,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
-    private RecyclerView recyclerView;
     private RecyclerWeatherAdapter adapter;
-    private View addButton;
     private AppCompatEditText editCity;
     private IMainView mainView;
 
@@ -36,8 +34,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView = findViewById(R.id.recycler_view);
-        addButton = findViewById(R.id.button_add_city);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        View addButton = findViewById(R.id.button_add_city);
         editCity = findViewById(R.id.et_query);
 
         mainView = this;

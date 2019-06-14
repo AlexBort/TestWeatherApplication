@@ -27,7 +27,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
         return Realm.getDefaultInstance();
     }
 
-    private void workingWithDb(final CityWeather cityWeather) {
+    private void saveToDb(final CityWeather cityWeather) {
         Realm realm = configRealm();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -64,7 +64,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 if (response == null) {
                     view.showBadRequest();
                 } else {
-                    workingWithDb(response);
+                    saveToDb(response);
                     Realm realm = Realm.getDefaultInstance();
                     RealmResults<CityWeather> results = realm.where(CityWeather.class).findAll();
                     view.showWeatherList(results);
