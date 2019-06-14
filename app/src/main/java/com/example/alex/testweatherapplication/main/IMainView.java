@@ -9,4 +9,7 @@ public interface IMainView extends IBaseView {
 
     void showWeatherList(List<CityWeather> cityWeathers);
 
+    void showError();
+
+    void showBadRequest();
 }

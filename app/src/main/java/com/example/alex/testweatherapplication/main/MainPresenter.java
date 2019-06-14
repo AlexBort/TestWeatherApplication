@@ -13,14 +13,45 @@ public class MainPresenter extends BasePresenter<IMainView> {
     private ApiManager apiManager = new ApiManager();
 
 
-    private void requestGetWeather(final IMainView view) {
-        apiManager.getCityWeather(null, new ResponseListener() {
+//    private void requestGetWeather(final IMainView view) {
+//        apiManager.getCityWeather(null, "", new ResponseListener() {
+//            @Override
+//            public void successResponse(CityWeather response) {
+//                List<CityWeather> list = new LinkedList<>();
+//                list.add(response);
+//                view.showWeatherList(list);
+////                response.getCity();
+//            }
+//
+//            @Override
+//            public void failureResponse() {
+//
+//            }
+//        });
+//    }
+
+    // TODO: 13.06.2019 when we have db, we won't pass every time request for getting weather
+
+
+    @Override
+    public void onBindView(IMainView view) {
+//        super.onBindView(view);
+//        requestGetWeather(view);
+    }
+
+
+    private void defaultRequest(String cityName, final IMainView view) {
+        apiManager.getCityWeather(null, cityName, new ResponseListener() {
             @Override
             public void successResponse(CityWeather response) {
-                List<CityWeather> list = new LinkedList<>();
-                list.add(response);
-                view.showWeatherList(list);
-//                response.getCity();
+                if (response == null) {
+                    view.showBadRequest();
+                } else {
+                    response.getCity().getName();
+                    List<CityWeather> list = new LinkedList<>();
+                    list.add(response);
+                    view.showWeatherList(list);
+                }
             }
 
             @Override
@@ -30,12 +61,13 @@ public class MainPresenter extends BasePresenter<IMainView> {
         });
     }
 
-    // TODO: 13.06.2019 when we have db, we won't pass every time request for getting weather
+    public void onAddButtonPressed(String text, IMainView view) {
+        if (text == null || text.isEmpty()) {
+            view.showError();
+        } else {
+            defaultRequest("Kiev", view);
+            defaultRequest("Vinnytsia", view);
+        }
 
-
-    @Override
-    public void onBindView(IMainView view) {
-        super.onBindView(view);
-        requestGetWeather(view);
     }
 }

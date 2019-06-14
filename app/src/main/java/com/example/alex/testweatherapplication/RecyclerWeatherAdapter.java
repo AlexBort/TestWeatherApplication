@@ -29,9 +29,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         data = new LinkedList<>(); // TODO: 13.06.2019 why did she use LinkedList
     }
 
-    public RecyclerWeatherAdapter getAdapter() {
-        return this;
-    }
+
 
     @NonNull
     @Override
@@ -50,6 +48,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
         holder.humidity.setText(holder.context.getString(R.string.title_humidity, String.valueOf(cityWeather.getList().get(0).getMain().getHumidity())));
         holder.date.setText(holder.context.getString(R.string.title_date, cityWeather.getList().get(0).getDtTxt()));
         holder.pressure.setText(holder.context.getString(R.string.title_pressure, cityWeather.getList().get(0).getMain().getPressure()));
+
         setWeatherIcon(holder.context, cityWeather.getList().get(0).getWeather().get(0).getIcon(), holder.imageView);
 
         onBindDayTemperature(holder.context, 1, holder.tmpFirstDay, cityWeather);

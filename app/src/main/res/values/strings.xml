@@ -10,6 +10,6 @@
     <string name="title_date">Date: %s</string>
     <string name="title_temperature">Temp: %.1f</string>
     <string name="toast_not_found">City is not found!</string>
-
+<string name="empty_message">Empty field</string>
 
 </resources>
