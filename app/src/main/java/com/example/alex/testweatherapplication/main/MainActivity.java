@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         editCity = findViewById(R.id.et_query);
 
         mainView = this;
-        
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     @Override
     public void showWeatherList(List<CityWeather> cityWeathers) {
+        adapter.getData().clear();
         adapter.setData(cityWeathers);
     }
 }

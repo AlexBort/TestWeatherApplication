@@ -24,7 +24,7 @@ public class RecyclerWeatherAdapter extends RecyclerView.Adapter<RecyclerWeather
     private List<CityWeather> data;
 
     public RecyclerWeatherAdapter() {
-        data = new LinkedList<>(); // TODO: 13.06.2019 why did she use LinkedList
+        data = new LinkedList<>();
     }
 
     @NonNull
