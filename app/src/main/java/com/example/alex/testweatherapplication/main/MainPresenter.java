@@ -8,32 +8,71 @@ import com.example.alex.testweatherapplication.mvp.BasePresenter;
 import java.util.LinkedList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmList;
+import io.realm.RealmResults;
+
 public class MainPresenter extends BasePresenter<IMainView> {
 
     private ApiManager apiManager = new ApiManager();
 
     @Override
     public void onBindView(IMainView view) {
+        send(view);
+//        sendWeatherRequest("Kiev", view);
+//        sendWeatherRequest("Vinnytsia", view);
+    }
+
+    private Realm configRealm() {
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        Realm.setDefaultConfiguration(configuration);
+        return Realm.getDefaultInstance();
+    }
+
+    private void workingWithDb(final CityWeather cityWeather) {
+        Realm realm = configRealm();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                List<CityWeather> list = new LinkedList<>();
+                list.add(cityWeather);
+                for (int i = 0; i < list.size(); i++) {
+                    realm.copyToRealm(list.get(i));
+                }
+            }
+        });
+    }
+
+    private void send(IMainView view) {
+        //  workingWithDb(response);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<CityWeather> results = realm.where(CityWeather.class).findAll();
+        view.showWeatherList(results);
     }
 
 
-    private void defaultRequest(String cityName, final IMainView view) {
+    private void sendWeatherRequest(String cityName, final IMainView view) {
         apiManager.getCityWeather(null, cityName, new ResponseListener() {
             @Override
             public void successResponse(CityWeather response) {
                 if (response == null) {
                     view.showBadRequest();
                 } else {
-                    response.getCity().getName();
+
+                    workingWithDb(response);
+                    Realm realm = Realm.getDefaultInstance();
+                    RealmResults<CityWeather> results = realm.where(CityWeather.class).findAll();
+
                     List<CityWeather> list = new LinkedList<>();
                     list.add(response);
-                    view.showWeatherList(list);
+                    view.showWeatherList(results);
                 }
             }
 
             @Override
             public void failureResponse() {
-
+                view.showBadRequest();
             }
         });
     }
@@ -41,10 +80,12 @@ public class MainPresenter extends BasePresenter<IMainView> {
     public void onAddButtonPressed(String text, IMainView view) {
         if (text == null || text.isEmpty()) {
             view.showError();
-        } else {
-            defaultRequest("Kiev", view);
-            defaultRequest("Vinnytsia", view);
         }
+
+//        else {
+//            sendWeatherRequest("Kiev", view);
+//            sendWeatherRequest("Vinnytsia", view);
+//        }
 
     }
 }

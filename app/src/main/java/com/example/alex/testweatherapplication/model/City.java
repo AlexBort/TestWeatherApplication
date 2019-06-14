@@ -3,16 +3,20 @@ package com.example.alex.testweatherapplication.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class City{
+import io.realm.RealmObject;
 
-    @SerializedName("id")
-    @Expose
+public class City extends RealmObject {
+
+    public City(){}
+
+//    @SerializedName("id")
+//    @Expose
     private int id;
-    @SerializedName("name")
-    @Expose
+//    @SerializedName("name")
+//    @Expose
     private String name;
-    @SerializedName("country")
-    @Expose
+//    @SerializedName("country")
+//    @Expose
     private String country;
 
     public int getId() {

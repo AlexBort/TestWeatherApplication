@@ -5,19 +5,25 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Data {
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
-    @SerializedName("dt")
-    @Expose
+public class Data extends RealmObject {
+
+    public Data() {
+    }
+
+    //    @SerializedName("dt")
+//    @Expose
     private int dt;
-    @SerializedName("main")
-    @Expose
+    //    @SerializedName("main")
+//    @Expose
     private Main main;
-    @SerializedName("weather")
-    @Expose
-    private List<Weather> weather = null;
-    @SerializedName("dt_txt")
-    @Expose
+    //    @SerializedName("weather")
+//    @Expose
+    private RealmList<Weather> weather = null;
+    //    @SerializedName("dt_txt")
+//    @Expose
     private String dtTxt;
 
 
@@ -29,7 +35,7 @@ public class Data {
         return main;
     }
 
-    public List<Weather> getWeather() {
+    public RealmList<Weather> getWeather() {
         return weather;
     }
 

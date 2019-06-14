@@ -5,16 +5,27 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class CityWeather {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.RealmResults;
 
-    @SerializedName("message")
-    @Expose
+public class CityWeather extends RealmObject {
+
+    public CityWeather() {
+    }
+
+    //    @SerializedName("message")
+//    @Expose
     private double message;
-    @SerializedName("list")
-    @Expose
-    private List<Data> list = null;
-    @SerializedName("city")
-    @Expose
+//    @SerializedName("list")
+//    @Expose
+
+    private RealmList<Data> list;
+
+//    private List<Data> list = null;
+
+    //    @SerializedName("city")
+//    @Expose
     private City city;
 
     public double getMessage() {
@@ -25,7 +36,7 @@ public class CityWeather {
         this.message = message;
     }
 
-    public List<Data> getList() {
+    public RealmList<Data> getList() {
         return list;
     }
 
