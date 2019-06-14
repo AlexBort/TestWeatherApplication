@@ -13,17 +13,11 @@ public class Data extends RealmObject {
     public Data() {
     }
 
-    //    @SerializedName("dt")
-//    @Expose
+
     private int dt;
-    //    @SerializedName("main")
-//    @Expose
     private Main main;
-    //    @SerializedName("weather")
-//    @Expose
+
     private RealmList<Weather> weather = null;
-    //    @SerializedName("dt_txt")
-//    @Expose
     private String dtTxt;
 
 

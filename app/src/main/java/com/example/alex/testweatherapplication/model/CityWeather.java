@@ -14,18 +14,11 @@ public class CityWeather extends RealmObject {
     public CityWeather() {
     }
 
-    //    @SerializedName("message")
-//    @Expose
     private double message;
-//    @SerializedName("list")
-//    @Expose
 
     private RealmList<Data> list;
 
-//    private List<Data> list = null;
 
-    //    @SerializedName("city")
-//    @Expose
     private City city;
 
     public double getMessage() {

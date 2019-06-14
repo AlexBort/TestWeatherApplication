@@ -9,14 +9,10 @@ public class City extends RealmObject {
 
     public City(){}
 
-//    @SerializedName("id")
-//    @Expose
     private int id;
-//    @SerializedName("name")
-//    @Expose
+
     private String name;
-//    @SerializedName("country")
-//    @Expose
+
     private String country;
 
     public int getId() {

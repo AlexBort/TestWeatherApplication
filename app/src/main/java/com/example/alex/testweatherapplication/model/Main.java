@@ -10,14 +10,8 @@ public class Main extends RealmObject {
     public Main() {
     }
 
-    //    @SerializedName("temp")
-//    @Expose
     private double temp;
-    //    @SerializedName("pressure")
-//    @Expose
     private double pressure;
-    //    @SerializedName("humidity")
-//    @Expose
     private int humidity;
 
 
