@@ -1,15 +1,14 @@
-package com.example.alex.testweatherapplication;
+package com.example.alex.testweatherapplication.main;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.alex.testweatherapplication.main.IMainView;
-import com.example.alex.testweatherapplication.main.MainPresenter;
+import com.example.alex.testweatherapplication.R;
+import com.example.alex.testweatherapplication.RecyclerWeatherAdapter;
 import com.example.alex.testweatherapplication.model.CityWeather;
 import com.example.alex.testweatherapplication.mvp.BaseActivity;
 
